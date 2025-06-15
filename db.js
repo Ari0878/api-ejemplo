@@ -1,18 +1,18 @@
-const mysql = require('mysql');
+const { Client } = require('pg');
 
-const connection = mysql.createConnection({
-  host: 'dpg-d170pcadbo4c73cuekvg-a',
+const client = new Client({
+  host: 'dpg-d170pcadbo4c73cuekvg-a.oregon-postgres.render.com', // Host completo
   user: 'alumnos_zqpq_user',
   password: 'VBeWEJFNMeOPu8wpPvfTKqXLxwf5mPKo',
-  database: 'alumnos_zqpq'
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error('Error de conexión a la base de datos:', err);
-    return;
+  database: 'alumnos_zqpq',
+  port: 5432, // Puerto estándar de PostgreSQL
+  ssl: {
+    rejectUnauthorized: false // Importante para conexiones a Render
   }
-  console.log('Conexión a la base de datos exitosa');
 });
 
-module.exports = connection;
+client.connect()
+  .then(() => console.log('Conexión a PostgreSQL exitosa'))
+  .catch(err => console.error('Error de conexión a la base de datos:', err));
+
+module.exports = client;
