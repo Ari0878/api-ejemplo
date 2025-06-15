@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const connection = require('./db');
 
+const port = process.env.PORT || 5432;
+
 // Obtener todos los registros
 router.get('/registros_alumnos', (req, res) => {
   connection.query('SELECT * FROM alumnos ', (err, results) => {
