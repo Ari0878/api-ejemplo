@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 app.use('/api', routes);
 
 // Puerto
-const PORT = process.env.PORT || 3001 ;
+const PORT = process.env.PORT || 5432 ;
 app.listen(PORT, () => {
   console.log(`Servidor API a la espera de consulta, por el puerto ${PORT}`);
 });
