@@ -15,4 +15,7 @@
     "mysql": "^2.18.1",
     "pg": "^8.16.0"
   }
+  "scripts": {
+  "start": "node app.js"
+}
 }
